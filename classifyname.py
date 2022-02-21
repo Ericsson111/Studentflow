@@ -1,6 +1,6 @@
 import pandas as pd
 
-data = pd.read_csv('name.csv', encoding= 'unicode_escape')
+data = pd.read_csv('exampleName.csv', encoding= 'unicode_escape')
 namedict = {}
 
 class User:
