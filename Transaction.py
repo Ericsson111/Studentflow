@@ -7,7 +7,7 @@ user_wallet_dictionary = {'John': ['c923d48c20087e0e780d4ffaeca64ee6b63f3b1ed871
                'Luke': ['3b9ea03d3aad72d19bb707b3f33bd58931bc09b2b084971e7e6481516ccafc69', '44060681be4df0269881cfa1ac49496bb2d977e51abd30d7937369932e777ca3'], 
                'Matthew': ['ba2ae63f3a5b4ae1516e104828047cbc50e69f657449f70edb1091236a227e7d']}
 
-# user's wallet address consists of 64 digits numbers and alphabets
+# user's wallet address consists of 64 digits of numbers and alphabets
 
 wallet_address_dictionary = {'c923d48c20087e0e780d4ffaeca64ee6b63f3b1ed8710c2cd40a7e32c063acc0': 100,
                   '31247283d389a52a491777189ac2de51ee460cf23a80791662d960c86fc818cd': 200,
@@ -47,12 +47,13 @@ class Transaction_system():
                 except KeyError:
                       return False
 
+        # ensure the money only flow between the sender and the recipient
         def generate_transaction_code(sender_wallet_address: str, recipient_wallet_address: str, transaction_amount: int): # Generates a valid ID for transaction
                transaction_valid_token = binascii.b2a_hex(os.urandom(75)) # generates a 150 characters token
                current_transaction_token_array.append(transaction_valid_token) # append the transaction token into the waiting list
                current_transaction_dictionary[transaction_valid_token] = [sender_wallet_address, recipient_wallet_address, transaction_amount] 
 
-        def process_current_transaction_dictionary(): # process queue
+        def process_current_transaction_dictionary(): # process transaction queue
                token = current_transaction_token_array.popleft()
                sender_address = current_transaction_dictionary[token][0]
                recipient_address = current_transaction_dictionary[token][1]
@@ -67,4 +68,20 @@ class Transaction_system():
               for address, value in wallet_address_dictionary.items():
                     print(address, value)
 
-Transaction_system.transaction_navigation('c923d48c20087e0e780d4ffaeca64ee6b63f3b1ed8710c2cd40a7e32c063acc0', '117385d1f3d9a9985d0e90515603200d6f8d1bbf81086d5e6382525eb193d4aa', 50)
+class User():
+        def new_wallet(username):
+              user_new_wallet_address = binascii.b2a_hex(os.urandom(32)).decode(encoding="utf-8")
+              user_wallet_dictionary[username].append(user_new_wallet_address)
+            
+              wallet_address_dictionary[user_new_wallet_address] = 0
+
+              print(user_wallet_dictionary)
+
+        def new_transaction(username: str, recipient: str, amount: int):
+              print(user_wallet_dictionary[username]) # list
+              # select wallet
+              wallet = int(input("Please select which wallet will be used for this transaction(0-9)")) 
+              sender_address = user_wallet_dictionary[username][wallet]
+              Transaction_system.transaction_navigation(sender_address, recipient, amount)
+
+User.new_wallet('Smith')
