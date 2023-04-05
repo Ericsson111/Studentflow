@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAaVBMVEU6VZ////81Up0yT5xgc61+jbsvTZyXo8hFXaOirM0nSJmlrs7O1OUkRpkfQ5c1UZ1oerKHlcDp6/M9WKHHzeHV2ulxgravt9Td4Ozl6PGDkb7ByN5YbatQZ6j29/q3v9h2hrhMY6aQnMSsAnKHAAAC70lEQVR4nO3caXLiMBRFYdoihhhsQ5jDlPT+F9mdqv7bRrYQ7z7XOQug9BUWHiQzmRARERERERERERERERERqVe0IZQPCtaDHFwo62Yz/VrP3jtbrH0Sy7rYH46/YtpV1oPtX6jCbBel+2npThjq/Taa51AYmrdTH583YdHsP/r5nAnLTa/j05+w+ezv8yRsq/MQoB9hmPeegb6E5eU2DOhFWK4G+rwIw3CgD2G4Dge6ELaboXPQi7CJu4nwK6zvKUAHwvCVBHQgrFMmoQdh4jGqL2wviUB5YRP/uMKnsJ2mAtWF9XLkwjblcs2FsDqMXZh6LpQXhn06UFtYpZ7t5YX1wEczboTF/AlAaWFYP0OovPZU9pmGt9194W79sIq/Jt2uqqrytwbcxJ4NT9e6tR7soEIk8N749E2K7zjgubEe6dAi75yOboGxwrnTQ/RvRZTwIHy6e1SccF5Yj3N4UcJjbT3MhKKEh9J6mAlFCZWvyR4WJXxDqBxChPohRKgfQoT6IUSoH0KE+iFEqB9ChPqNQ1h0vKJcxWwt/aofvelsDFzNOlpECO9dH/DT+8ZUWMYgErNdfXuB8Ga7RPwCofHy2wuE59EfpQvbH9MXCNejF65st2q8QPhtu5Mhv/BmfE2TX/hhvGMqv3BpvBslv/BuvGUqv3A2+nloff+YX3gx3rmYX2j9CCC78Ga9NzO78GS9dTG7cDv679B8c2Z24e/R/9LsRy+8Wm/kzy60nobZhdb3TvmF9u8e5hYaP0p8gfB99PPQ/l2F3MKp+StDuYXWvuxC60eJ+YXm907ZhQJ/NlA+4d9ZOrrbH6WTzbyjmL+D/Oz6BNsl/H8V/y9E7TYpOz7BGveoceyn6QohQv0QItQPIUL9ECLUDyFC/RAi1A8hQv0QItQPIUL9ECLUDyFC/RAi1A8hQv0QItQPIUL9ECLUDyFC/RAi1A8hQv0QItQPIUL9ECLUDyFC/RAi1A8hQv0QItQPIUL9ECLs0R8aFUYEFLSeAgAAAABJRU5ErkJggg=="/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% if title %}
+        <title>Thefakebook - {{ title }}</title>
+    {% else %}
+        <title>Thefakebook</title>
+    {% endif %}
+</head>
+
+<!-- disabled right click 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  jQuery(document).ready(function(){
+  jQuery(function() {
+        jQuery(this).bind("contextmenu", function(event) {
+            event.preventDefault();
+            alert('Write your own code')
+        });
+    });
+});
+</script>
+-->
+
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{{ url_for('home') }}">Thefakebook</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <!-- Navbar Right Side -->
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-info" type="submit">Search</button>
+            </form>
+            
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <style>
+              body {font-family: Arial, Helvetica, sans-serif;}
+
+.navbar {
+  width: 100%;
+  background-color: rgb(54, 120, 163);
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: rgb(71, 98, 156);
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+</style>
+
+
+            <div class="navbar-nav">
+              {% if current_user.is_authenticated %} 
+                <a class="nav-item nav-link" href="{{ url_for('new_post') }}"><i class="fa fa-fw fa-plus-square"></i>Share</a>
+                <a class="nav-item nav-link" href="/users/{{ current_user.username }}"><i class="fa fa-fw fa-user-circle"></i>{{ current_user.username }}</a>               
+                <a class="nav-item nav-link" href="/inbox/{{ current_user.username }}"><i class="fa fa-fw fa-inbox"></i></a> 
+                <a class="nav-item nav-link" href="{{ url_for('question') }}"><i class="fa fa-fw fa-question-circle"></i></a>  
+                <a class="nav-item nav-link" href="/help/all-badges-can-earn"><i class="fa fa-fw fa-trophy"></i></a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('login') }}"><i class="fa fa-fw fa-sign-in"></i>Login</a>
+                <a class="nav-item nav-link" href="/">Sign Up</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- the message will be flashed -->
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+<div style="text-align:center">
+    <h1>What topics can I post about?</h1>
+                    </div>
+
+        <br>
+    <br>
+
+<article class="article content-section">
+    <div class="media-body">
+        <p>
+Self improvement/Self-Hypnosis
+<hr>
+Health & Fitness for Busy People
+<hr>
+Language Learning Blogs
+<hr>
+How to Travel on a Budget (Best hotel deals. Car rental. Trip advice.)
+<hr>
+Writing Style
+<hr>
+Rescued Animals
+<hr>
+Personal Development (Passions & Ambition Pursuing)
+<hr>
+Social Dynamics & Communication Skills
+<hr>
+Working in Uncommon Fields of Expertise While Location Independence
+<hr>
+Self Defense
+<hr>
+Recipes for couples without children
+<hr>
+Male guide to female communication
+<hr>
+Using technology in small business (Google Docs, CRM, credit card processing)
+<hr>
+Blogging about special kinds of foods (we’ve got a course on this one!)
+<hr>
+Bullying/cyber bullying
+<hr>
+Behavioral disorders in children
+<hr>
+Body-weight training
+<hr>
+Entrepreneurial education for young children & adults
+<hr>
+Disc Golf
+<hr>
+DIY Projects, DIY Business and Selling Homemade Items
+<hr>
+How to have a Strong Marriage
+<hr>
+How to be a real and true friend
+<hr>
+How to Train for a Triathlon
+<hr>
+Careers vs job: following your passion
+<hr>
+Getting VMWare Certified
+<hr>
+Getting Microsoft Certified
+<hr>
+Hamburgers
+<hr>
+Self-sustaining lifestyle (grow your own food/ use solar power etc)
+<hr>
+Mind strengthening (mind over matter/ lucid dreaming)
+<hr>
+Beyond the basics of personal financial management
+<hr>
+Healthy eating blog
+<hr>
+Ghost-hunting
+<hr>
+Home brewing beer
+<hr>
+Self defense training (“for women” or “for children” or “for business executives”)
+<hr>
+Indie Video Game Development
+<hr>
+Video Game tactics shown through video tutorials
+<hr>
+Helping small businesses get more customers
+<hr>
+Community gardening/Urban farming
+<hr>
+Starting and running your own social network
+<hr>
+Point and Shoot Photography (How to create incredible photographs with whatever camera you have in your pocket)
+<hr>
+Blog & Website Design for Non Designers (How to make your blog look incredible without spending a fortune)
+<hr>
+The Art of Getting What You Want (How to use confidence and technique to get what you want from life, your relationships and your career)
+<hr>
+Make Good Video for the Web (How to leverage the video medium to take your brand, blog, website, or business to the next level)
+<hr>
+Self-Employment (The logistics behind how to start working for yourself (i.e. How to leave your job, find health insurance, set up an LLC, etc.)
+<hr>
+How to write an e-bestseller (How could we document the process of creating an Amazon Kindle (or other electronic format) bestseller.)
+<hr>
+Rapid Language Learning
+<hr>
+How to become a better writer
+<hr>
+How to lose weight and feel awesome (Even at middle age! The Primal/Paleo way)
+<hr>
+Vegan diet
+<hr>
+Cycling. More specifically, urban commuting.
+<hr>
+Apartment living (this could range from renter issues to decor, etc.)
+<hr>
+Interior design blog
+<hr>
+Eating organic on a tight budget
+<hr>
+Health conscious, High mileage, Minimalist traveling
+<hr>
+How to Become a Famous Rock-star
+<hr>
+Sports Photography
+<hr>
+Life skills/life coaching for high school students
+<hr>
+College planning for homeschoolers
+<hr>
+Speaking in Public (How to overcome the fear to the audience; minimalistic approach to presentations, etc.)
+<hr>
+A Family related site (Topics centered mostly on improving the relationship between family members; how to increase the creativity of kids and specially parents; how to help kids to find their passion and inner peace.)
+<hr>
+Alternative Running Events (Mudruns, Tough Mudder, Spartan Race, Warrior Dash, etc.)
+<hr>
+Learning the Ukulele
+<hr>
+Learn How to Play Guitar
+<hr>
+How to Get What You Want Without Breaking the Law or Burning Bridges
+<hr>
+Becoming a wine connoisseur
+<hr>
+Build a boat and cross the Pacific in it
+<hr>
+Getting good at tennis and qualifying for Wimbledon
+<hr>
+Windsurfing
+<hr>
+Regular Surfing
+<hr>
+How mobile applications that can improve one’s work productivity, relationships with friends and family, and overall quality of life.
+<hr>
+Simpler Living (a blog that will explore and map a journey from a miserable 6 figure a year traditional way of living back to an often forgotten way of life.)
+<hr>
+The best “places” around the world & do they live up to the hype?
+<hr>
+How to do travel photography/videography
+<hr>
+The Great Recession (A blog based upon a sustainable lifestyle with a smaller footprint.)
+<hr>
+Building an iPhone application
+<hr>
+The end of the world and the Maya prophecies for December 21st, 2012
+<hr>
+Car maintenance
+<hr>
+Running a Small Agile Business (we’ve got a 9 stage blogging/business roadmap for this)
+<hr>
+A “Good Cause” Site (Telling the Stories of Successful Non-Profits & Charities)
+<hr>
+Eco-tourism
+<hr>
+The world of virtual conferences
+<hr>
+QR codes. How to best use them in small business Marketing.
+<hr>
+Inspire Bootstrappers (A blog to inspire bootstrappers by posting real bootstrapper success stories.)
+</p>
+</div>
+</main>
+
+
+
+
+<!-- Site footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <h6>THEFAKEBOOK</h6>
+        <div class="footer-links">
+          <li><a href="/help">Help</a></li>
+          <li><a href="/question">Question</a></li>
+          <li><a href="/help/allbadges">Allbadges</a></li>
+          <li><a href="Welcome/{{ current_user.username }}">Welcome</a></li>
+        </div>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>About Us</h6>
+        <div class="footer-links">
+          <li><a href="/about">About</a></li>
+          <li><a href="/help/privacy">Privacy</a></li>
+          <li><a href="/help/terms">Terms</a></li>
+          <li><a href="/help/contact">Contact Us</a></li>
+        </div>
+      </div>
+
+      <div class="col-xs-6 col-md-4">
+        <h6>Contact Us</h6>
+        <div class="footer-links">
+          <li><a href="https://www.instagram.com/doryc007/" target="_blank">Instagram</a></li> 
+          <li><a href="https://stackoverflow.com/users/13825988/ericsson" target="_blank">Stackoverflow</a></li> 
+          <li><a href="https://www.reddit.com/user/Doryc007/" target="_blank">Reddit</a></li> 
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+</div>
+</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2020 thefakebook
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

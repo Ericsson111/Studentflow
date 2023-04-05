@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <a class="nav-item nav-link" href="{{ url_for('help') }}">Help</a>
+    <p>Detailed to any post you might have</p>
+</div>
+<br>
+<div class="content-section">
+    <a class="nav-item nav-link" href="{{ url_for('privacy') }}">Privacy</a>
+    <p>Privacy for the current website</p>
+</div>
+<br>
+<div class="content-section">
+    <a class="nav-item nav-link" href="{{ url_for('terms') }}">Terms of use</a>
+    <p>Terms for the current website</p>
+</div>
+<br>
+<div class="content-section">
+    <a class="nav-item nav-link" href="{{ url_for('contact') }}">Contact Us</a>
+    <p>Contact us by email</p>
+</div>
+{% endblock content %}

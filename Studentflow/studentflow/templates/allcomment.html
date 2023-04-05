@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<div style="text-align:center">
+  <h1>All Feedback</h1>
+                  </div>
+          <br>
+  <hr>
+                    
+                    <br>
+                    <a href="/comment/new">Write comment</a>
+                    <hr>
+    {% for comment in comments %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ comment.name }}</a>
+              <small class="text-muted">{{ comment.date_posted.strftime('%Y-%m-%d %H:%M') }}</small>
+            </div>
+            <p><a class="article-content" href="#">{{ comment.content }}</a></p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

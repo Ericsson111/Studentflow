@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div style="text-align:center">
+  <h1>All Messages</h1>
+                  </div>
+          <br>
+          <p class="text-muted">Discussion and chat(with all people in thefakebook</p>
+  <hr>
+                    
+                    <br>
+                    <a href="/message/new">Add messages</a>
+                    <hr>
+    {% for chat in chats %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{{ url_for('user_posts', username=chat.author.username) }}">{{ chat.author.username }}</a>
+              <small class="text-muted">{{ chat.date_posted.strftime('%Y-%m-%d %H:%M') }}</small>
+            </div>
+            <p><a class="article-content" href="#">{{ chat.content }}</a></p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

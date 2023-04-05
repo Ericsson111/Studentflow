@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+{% block content %}
+<script type="text/javascript"> 
+  function disableselect(e){  
+  return false  
+  }  
+  
+  function reEnable(){  
+  return true  
+  }  
+  
+  //if IE4+  
+  document.onselectstart=new Function ("return false")  
+  document.oncontextmenu=new Function ("return false")  
+  //if NS6  
+  if (window.sidebar){  
+  document.onmousedown=disableselect  
+  document.onclick=reEnable  
+  }
+  </script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#myUL li a {
+  border: 1px solid #ddd;
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+}
+</style>
+</head>
+<body>
+
+<h2>Search for Tags</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+
+<ul id="myUL">
+  <li><a href="https://google.com/" target="_blank">Google</a></li>
+  <li><a href="https://facebook.com/" target="_blank">Facebook</a></li>
+  <li><a href="https://youtube.com/" target="_blank">YouTube</a></li>
+  <li><a href="https://instagram.com/" target="_blank">Instagram</a></li> 
+  <li><a href="https://docs.google.com/" target="_blank">Google Docs</a></li>
+  <li><a href="https://drive.google.com/" target="_blank">Google Drive</a></li>
+  <li><a href="https://mail.google.com/" target="_blank">Gmail</a></li>
+  <li><a href="https://twitter.com/" target="_blank">Twitter</a></li>
+  <li><a href="https://yahoo.com/" target="_blank">Yahoo</a></li>
+  <li><a href="https://wikipedia.com/" target="_blank">Wikipedia</a></li>
+  <li><a href="https://translate.google.com/" target="_blank">Google Translate</a></li>
+  <li><a href="https://google.com/maps" target="_blank">Google Maps</a></li>
+  <li><a href="https://google.com/earth" target="_blank">Google Earth</a></li>
+  <li><a href="https://stackoverflow.com/" target="_blank">Stackoverflow</a></li>
+  <li><a href="https://github.com/" target="_blank">Github</a></li>
+  <li><a href="https://spotify.com/" target="_blank">Spotify</a></li>
+  <li><a href="https://discord.com/" target="_blank">Discord</a></li>
+  <li><a href="https://amazon.com/" target="_blank">Amazon</a></li>
+  <li><a href="https://bestbuy.com/" target="_blank">BestBuy</a></li>
+  <li><a href="https://apple.com/" target="_blank">Apple</a></li>
+  <li><a href="https://walmart.ca/" target="_blank">Walmart</a></li>
+  <li><a href="https://cineplex.com/" target="_blank">Cineplex</a></li>
+  <li><a href="https://ebay.com/" target="_blank">Ebay</a></li>
+  <li><a href="https://td.com/" target="_blank">TD Bank</a></li>
+  <li><a href="https://yahoo.com/" target="_blank">Airbnb</a></li>
+  <li><a href="https://expedia.com/" target="_blank">Expedia</a></li>
+  <li><a href="https://bing.com/" target="_blank">Bing</a></li>
+  <li><a href="https://netflix.com/" target="_blank">NetFlix</a></li>
+  <li><a href="https://imdb.com/" target="_blank">IMDB</a></li>
+  <li><a href="https://pinterest.ca/" target="_blank">Pinterest</a></li>
+  <li><a href="https://linkedin.com/" target="_blank">Linkedin</a></li>
+  <li><a href="https://bbc.com/" target="_blank">BBC</a></li>
+  <li><a href="https://outlook.live.com/" target="_blank">Outlook</a></li>
+  <li><a href="https://nytimes.com/" target="_blank">New York Times</a></li>
+  <li><a href="https://office.com/" target="_blank">Microsoft Office</a></li>
+  <li><a href="https://booking.com/" target="_blank">Booking</a></li>
+  <li><a href="https://cnn.com/" target="_blank">CNN</a></li>
+  <li><a href="https://nike.com/" target="_blank">Nike</a></li>
+  <li><a href="https://adidas.com/" target="_blank">Adidas</a></li>
+  <li><a href="https://fitbit.com/" target="_blank">Fitbit</a></li>
+  <li><a href="https://Xbox.com/" target="_blank">Xbox</a></li>
+  <li><a href="https://playstation.com/" target="_blank">PlayStation</a></li>
+  <li><a href="https://microsoft.com/" target="_blank">Microsoft</a></li>
+  <li><a href="https://sony.com/" target="_blank">Sony</a></li>
+  <li><a href="https://rogers.com/" target="_blank">Rogers</a></li>
+  <li><a href="https://Freedom.com/" target="_blank">Freedom</a></li>
+  <li><a href="https://fido.com/" target="_blank">Fido</a></li>
+  <li><a href="https://samsung.com/" target="_blank">Samsung</a></li>
+  <li><a href="https://ikea.com/" target="_blank">IKEA</a></li>
+  <li><a href="https://roots.com/" target="_blank">Roots</a></li>
+  <li><a href="https://lg.com/" target="_blank">LG</a></li>
+  <li><a href="https://dell.com/" target="_blank">DELL</a></li>
+  <li><a href="https://sandisk.com/" target="_blank">Sandisk</a></li>
+  <li><a href="https://slides.google.com/" target="_blank">Goolge Slides</a></li>
+  <li><a href="https://gopro.com/" target="_blank">GoPro</a></li>
+  <li><a href="https://w3schools.com/" target="_blank">W3school</a></li>
+  <li><a href="https://merriam-webster.com/" target="_blank">Merriam-Webster</a></li>
+  <li><a href="https://www.oxfordlearnersdictionaries.com/" target="_blank">Oxford Dictionaries</a></li>
+</ul>
+
+<script>
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+{% endblock content %}

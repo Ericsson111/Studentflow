@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% if title %}
+        <title>Thefakebook - {{ title }}</title>
+    {% else %}
+        <title>Thefakebook</title>
+    {% endif %}
+</head>
+
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{{ url_for('home') }}">Thefakebook</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <!-- Navbar Right Side -->
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <style>
+              body {font-family: Arial, Helvetica, sans-serif;}
+
+.navbar {
+  width: 100%;
+  background-color: rgb(54, 120, 163);
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: rgb(71, 98, 156);
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+</style>
+
+<div class="navbar-collapse collapse justify-content-end" id="navbarDefault">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link nav-item" href="{{ url_for('home') }}">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll" href="#tags">Tags</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll" href="#edit_post">Edit post</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll" href="#unlock_badges">Badges</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll" href="#user">User</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link js-scroll" href="/help/what-post">Post</a>
+      </li>
+    </ul>
+  </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+
+</div>
+</main>
+
+<!-- title -->
+<div class="content-section">
+    <div class="title">
+        <h1 style="text-align:center;">Welcome to thefakebook</h1>
+
+    </div>
+
+</div>
+
+
+
+
+
+<!-- tag -->
+<section id="tags" class="about-mf sect-pt4 route">
+<h2 style="text-align:center;">Tag make it easy to find interesting post</h2>
+<section id="about" class="about-mf sect-pt4 route"></section>
+<div class="content-section">
+    <article class="media content-section">
+        <img src="https://www.bluleadz.com/hs-fs/hubfs/Blog_pics/blog-tags-tips.png?width=462&name=blog-tags-tips.png" alt="Tag" width="450" height="333">
+            <div class="media-body">
+    <div class="tag-make-easy-to-find">
+
+        <br>
+
+        <p>All question are <b>tagged</b> with their subject areas.
+           <br>
+           Each can have up to 50 charactors for tag, since a question might be related to several subjects. 
+        </p>
+
+        <br>
+
+        <p><b>Click any tag</b> to see a list of post with that tag, or go to the tag list to browse for topics that interest you.</p>
+
+        <br>
+    </div>
+</div>
+
+                </div>
+
+        </article>
+
+
+    </section>
+
+
+    <br>
+
+
+<br>
+
+
+
+            <br>
+
+<!-- improve posts by editing -->
+<section id="edit_post" class="about-mf sect-pt4 route">
+<div class="content-section">
+    <article class="media content-section">
+        <img src="https://ahrefs.com/blog/wp-content/uploads/2019/03/blog-how-to-write-a-blog-post-400x200.png" alt="Tag" width="450" height="333">
+            <div class="media-body">
+    <div class="improve-post-by-editing">
+        <p>Our goal is to have the best <b>post</b>, so if you see your post needs to improve, 
+        you can press update button to <a href="#" class="btn btn-secondary btn-btw active" role="button" aria-pressed="true">Update</a> the title, content and tags</p>
+
+    </div>
+</div>
+
+        </article>
+
+    </div>
+    
+                </section>
+
+<br>
+
+<br>
+
+
+
+<br>
+
+
+<!-- badges -->
+<section id="unlock_badges" class="about-mf sect-pt4 route"></section>
+<h2 style="text-align:center;">Unlock badges</h2>
+<div class="content-section">
+    <div class="explain">
+        <p>Every blog you post can helps you get more badges
+            for example<br> if the post total are smaller more than 10, the badges will be <p><button type="button" class="btn btn-secondary">NONE</button></p><br>
+        elif the post total smaller than 20 and larger than 10, the badges will be <p><button type="button" class="btn btn-info">Silver</button></p><br>
+           elif the post total smaller than 45 and larger than 20, the badges will be <p><button type="button" class="btn btn-warning">GOLD</button></p><br>
+        else is <p><button type="button" class="btn btn-primary">UNLIMATE</button></p>, post total more than 45. </p>
+    </div>
+
+        </div>
+                     
+    
+
+
+<!-- user -->
+<section id="user" class="about-mf sect-pt4 route">
+<h2 style="text-align:center;">User profile</h2>
+<div class="content-section">
+    <div class="media">
+      <div class="media-body">
+        <h2 class="account-heading"><i class="fa fa-fw fa-user-circle"></i>Ericsson == Your username</h2>
+          <br>
+          <p><i class="fa fa-fw fa-calendar"></i>Create account at 2020-11-14 == The date you create account</p>
+          <br>
+          <p><i class="fa fa-fw fa-user"></i>I'm 13 == The bio of user</p>
+          <br>
+          <p><i class="fa fa-fw fa-user"></i>user: 1 == The number is the user_id</p>
+          <br>
+          <p><i class="fas fa-fw fa-file-alt"></i>2 posts == How many post does user has</p>
+        </div>
+  
+        <br>
+  
+        <div class="content-section">
+          <b>Badges:</b>
+        <button type="button" class="btn btn-secondary">NONE</button><br><p><i class="fa fa-fw fa-calendar"></i>2020-10-14</p>
+  
+        <br>
+  
+        <p style="color:gold;">One of the first 100 members in here.</p>
+        
+        </div>
+  
+      </div>
+  
+    <br>
+  
+    </div>
+
+        </div>
+
+
+                        </section>                    
+
+<!-- Site footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <h6>THEFAKEBOOK</h6>
+        <div class="footer-links">
+          <li><a href="/help">Help</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/help/privacy">Privacy</a></li>
+          <li><a href="/help/terms">Terms</a></li>
+          <li><a href="Welcome/{{ current_user.username }}">Welcome</a></li>
+        </div>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>Contact Us</h6>
+        <div class="footer-links">
+          <li><a href="https://www.instagram.com/doryc007/" target="_blank">Instagram</a></li> 
+          <li><a href="https://stackoverflow.com/users/13825988/ericsson" target="_blank">Stackoverflow</a></li> 
+          <li><a href="https://www.reddit.com/user/Doryc007/" target="_blank">Reddit</a></li> 
+          <li><a href="mailto:ericssonfakebook@gmail.com">Email</a></li>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+</div>
+</div>
+
+
+<!-- 
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p class="copyright text-muted">&copy;2020 Thefakebook </p>
+        <p><a href="{{ url_for('help') }}">Help</a></p>
+        <p><a href="{{ url_for('privacy') }}">Privacy</a></p>
+        <p><a href="{{ url_for('terms') }}">Terms</a></p>
+        <a class="nav-item nav-link" href="/help/contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+-->
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

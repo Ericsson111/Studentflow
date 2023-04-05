@@ -1,0 +1,162 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content-section">
+  <div class="media">
+    <div class="media-body">
+      <h2 class="account-heading"><i class="fa fa-fw fa-user-circle"></i>{{ user.username }}</h2>
+        {% if current_user.username == user.username %}
+        <p><i class="fa fa-fw fa-envelope"></i>{{ current_user.email }} </p>
+        {% else %}
+        {% endif %}
+        <br>
+        {% if posts.total == 0 %}
+        <p class="text-muted">0 Reputation</p>
+        {% elif user.id == 1 %} 
+        <p class="text-muted">19482 Reputation</p>
+        {% elif posts.total < 3 %}
+        <p class="text-muted">273 Reputation</p>
+        {% elif posts.total < 5 %}
+        <p class="text-muted">582 Reputation</p>
+        {% elif posts.total < 7 %} 
+        <p class="text-muted">785 Reputation</p> 
+        {% elif posts.total < 10 %} 
+        <p class="text-muted">896 Reputation</p> 
+        {% elif posts.total < 13 %} 
+        <p class="text-muted">1080 Reputation</p> 
+        {% elif posts.total < 15 %} 
+        <p class="text-muted">1296 Reputation</p> 
+        {% elif posts.total < 17 %} 
+        <p class="text-muted">1583 Reputation</p> 
+        {% elif posts.total < 20 %} 
+        <p class="text-muted">1836 Reputation</p> 
+        {% elif posts.total < 22 %} 
+        <p class="text-muted">2077 Reputation</p> 
+        {% elif posts.total < 25 %} 
+        <p class="text-muted">2106 Reputation</p>
+        {% elif posts.total < 27 %} 
+        <p class="text-muted">2583 Reputation</p>  
+        {% elif posts.total < 30 %} 
+        <p class="text-muted">2795 Reputation</p> 
+        {% elif posts.total < 35 %} 
+        <p class="text-muted">3029 Reputation</p> 
+        {% elif posts.total < 37 %} 
+        <p class="text-muted">3183 Reputation</p>
+        {% elif posts.total < 40 %} 
+        <p class="text-muted">3792 Reputation</p>  
+        {% elif posts.total < 45 %} 
+        <p class="text-muted">4124 Reputation</p>
+        {% elif posts.total < 48 %} 
+        <p class="text-muted">4367 Reputation</p>
+        {% elif posts.total < 52 %} 
+        <p class="text-muted">4701 Reputation</p>
+        {% elif posts.total < 56 %} 
+        <p class="text-muted">4849 Reputation</p>
+        {% elif posts.total < 60 %} 
+        <p class="text-muted">5023 Reputation</p>
+        {% elif posts.total < 64 %} 
+        <p class="text-muted">5205 Reputation</p>
+        {% elif posts.total < 68 %} 
+        <p class="text-muted">5482 Reputation</p>
+        {% elif posts.total < 71 %} 
+        <p class="text-muted">5792 Reputation</p>
+        {% elif posts.total < 74 %} 
+        <p class="text-muted">5928 Reputation</p>
+        {% elif posts.total < 79 %} 
+        <p class="text-muted">6928 Reputation</p>
+        {% else %} 
+        <p class="text-muted">7000 Reputation</p>  
+        {% endif %}
+        <br>
+        <p>{{ user.about }}</p>
+        <br>
+        {% if user.location == None %} 
+        <p class="text-muted">Location: Currently blank.</p>
+        {% else %}
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+        <p><i class='far fa-flag'></i>Location: {{ user.location }}</p>
+        {% endif %}
+        <br>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <p>Phone: {{ user.phone }}</p>
+        <br>
+        {% if user.birth == None %} 
+        <p class="text-muted">Birth: Currently blank.</p>
+        {% else %} 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <p><i class="fa fa-birthday-cake"></i>Birth: {{ user.birth }}</p>
+        {% endif %}
+
+        {% if current_user.username == user.username %}
+          <a class="nav-item nav-link" href="{{ url_for('updateaccount') }}">Update Account</a>
+      {% endif %}
+
+      </div>
+
+      <br>
+    </div>
+
+    <br>
+  
+  </div>
+
+  <div class="media content-section">
+      <div style="text-align:center">
+          <p><i class="fa fa-fw fa-user"></i>user.id: {{ user.id }}  |  <i class="fas fa-fw fa-file-alt"></i>{{ posts.total }} posts  |  <i class="fa fa-fw fa-calendar"></i>Create account at {{ user.create_account.strftime('%Y-%m-%d') }}</p>
+        
+    </div>
+  </div>
+    
+
+      <div class="content-section">
+        <b>Badges:</b>
+        {% if user.username == 'Ericsson' %}
+        <button type="button" class="btn btn-primary">UNLIMATE</button><br><p><i class="fa fa-fw fa-calendar"></i>{{ user.badges.strftime('%Y-%m-%d') }}</p>
+      {% elif posts.total < 10 %}
+      <button type="button" class="btn btn-secondary">NONE</button><br><p><i class="fa fa-fw fa-calendar"></i>{{ user.badges.strftime('%Y-%m-%d') }}</p>
+      {% elif posts.total < 20 %}
+      <button type="button" class="btn btn-info">Silver</button><br><p><i class="fa fa-fw fa-calendar"></i>{{ user.badges.strftime('%Y-%m-%d') }}</p>
+      {% elif posts.total < 45 %}
+      <button type="button" class="btn btn-warning">GOLD</button><br><p><i class="fa fa-fw fa-calendar"></i>{{ user.badges.strftime('%Y-%m-%d') }}</p>
+      {% endif %}
+
+      <br>
+
+      {% if user.id == 1 %} 
+      <p style='Color:cyan;'>First User</p>
+      {% elif user.id < 100 %}
+      <p style="color:gold;">First 100 members.</p>
+      {% elif user.id < 200 %}
+      <p style="color:black;">First 200 members.</p>
+      {% else %}
+      {% endif %}
+
+</div>
+
+
+
+<!-- print all the posts from current user -->
+
+{% for post in posts.items %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="{{ url_for('user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+          <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+        </div>
+        <h4><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h4>
+        <div class="post-content">
+        <p class="article-content">{{ post.content }}</p>
+        </div>
+        <br>
+        <div class="post-tag">
+          <button type="button" class="btn btn-outline-info">{{ post.tag }}</button>
+        </div>
+      </div>
+    </article>
+{% endfor %}
+{% endblock content %}

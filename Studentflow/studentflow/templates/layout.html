@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAaVBMVEU6VZ////81Up0yT5xgc61+jbsvTZyXo8hFXaOirM0nSJmlrs7O1OUkRpkfQ5c1UZ1oerKHlcDp6/M9WKHHzeHV2ulxgravt9Td4Ozl6PGDkb7ByN5YbatQZ6j29/q3v9h2hrhMY6aQnMSsAnKHAAAC70lEQVR4nO3caXLiMBRFYdoihhhsQ5jDlPT+F9mdqv7bRrYQ7z7XOQug9BUWHiQzmRARERERERERERERERERqVe0IZQPCtaDHFwo62Yz/VrP3jtbrH0Sy7rYH46/YtpV1oPtX6jCbBel+2npThjq/Taa51AYmrdTH583YdHsP/r5nAnLTa/j05+w+ezv8yRsq/MQoB9hmPeegb6E5eU2DOhFWK4G+rwIw3CgD2G4Dge6ELaboXPQi7CJu4nwK6zvKUAHwvCVBHQgrFMmoQdh4jGqL2wviUB5YRP/uMKnsJ2mAtWF9XLkwjblcs2FsDqMXZh6LpQXhn06UFtYpZ7t5YX1wEczboTF/AlAaWFYP0OovPZU9pmGt9194W79sIq/Jt2uqqrytwbcxJ4NT9e6tR7soEIk8N749E2K7zjgubEe6dAi75yOboGxwrnTQ/RvRZTwIHy6e1SccF5Yj3N4UcJjbT3MhKKEh9J6mAlFCZWvyR4WJXxDqBxChPohRKgfQoT6IUSoH0KE+iFEqB9ChPqNQ1h0vKJcxWwt/aofvelsDFzNOlpECO9dH/DT+8ZUWMYgErNdfXuB8Ga7RPwCofHy2wuE59EfpQvbH9MXCNejF65st2q8QPhtu5Mhv/BmfE2TX/hhvGMqv3BpvBslv/BuvGUqv3A2+nloff+YX3gx3rmYX2j9CCC78Ga9NzO78GS9dTG7cDv679B8c2Z24e/R/9LsRy+8Wm/kzy60nobZhdb3TvmF9u8e5hYaP0p8gfB99PPQ/l2F3MKp+StDuYXWvuxC60eJ+YXm907ZhQJ/NlA+4d9ZOrrbH6WTzbyjmL+D/Oz6BNsl/H8V/y9E7TYpOz7BGveoceyn6QohQv0QItQPIUL9ECLUDyFC/RAi1A8hQv0QItQPIUL9ECLUDyFC/RAi1A8hQv0QItQPIUL9ECLUDyFC/RAi1A8hQv0QItQPIUL9ECLUDyFC/RAi1A8hQv0QItQPIUL9ECLs0R8aFUYEFLSeAgAAAABJRU5ErkJggg=="/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% if title %}
+        <title>Thefakebook - {{ title }}</title>
+    {% else %}
+        <title>Thefakebook</title>
+    {% endif %}
+</head>
+
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="{{ url_for('home') }}">Thefakebook</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <!-- Navbar Right Side -->
+            
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <style>
+              body {font-family: Arial, Helvetica, sans-serif;}
+
+.navbar {
+  width: 100%;
+  background-color: rgb(54, 120, 163);
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: rgb(71, 98, 156);
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+</style>
+
+
+            <div class="navbar-nav">
+              {% if current_user.is_authenticated %} 
+                <a class="nav-item nav-link" href="{{ url_for('new_post') }}"><i class="fa fa-fw fa-plus-square"></i>Share</a>
+                <a class="nav-item nav-link" href="/users/{{ current_user.username }}"><i class="fa fa-fw fa-user-circle"></i>{{ current_user.username }}</a>               
+                <a class="nav-item nav-link" href="/inbox/{{ current_user.username }}"><i class="fa fa-fw fa-inbox"></i></a> 
+                <a class="nav-item nav-link" href="{{ url_for('question') }}"><i class="fa fa-fw fa-question-circle"></i></a>  
+                <a class="nav-item nav-link" href="/help/all-badges-can-earn"><i class="fa fa-fw fa-trophy"></i></a>
+              {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('login') }}"><i class="fa fa-fw fa-sign-in"></i>Login</a>
+                <a class="nav-item nav-link" href="/">Sign Up</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- the message will be flashed -->
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+        </div>
+  
+        <script src=" 
+     https://kit.fontawesome.com/a076d05399.js"> 
+    </script> 
+
+    <style> 
+      ul { 
+        list-style-type: none; 
+        margin: 0; 
+        padding: 0; 
+        width: 300px; 
+        background-color: #f1f1f1; 
+      } 
+      li a { 
+        display: block; 
+        color: #000; 
+        padding: 8px 16px; 
+        text-decoration: none; 
+      } 
+  
+      /* Change the link color on hover */ 
+      li a:hover { 
+        background-color: #fad390; 
+        color: #fff; 
+      } 
+      .icon { 
+        margin-right: 10px; 
+      } 
+  </style>
+
+  <div class="right-section">
+        <ul> 
+          <li><a href="{{ url_for('home') }}"> 
+             <i class="fa fa-fw fa-home"></i> 
+            Home</a></li> 
+
+          <li><a href="/post/findtags">
+             <i class="fa fa-fw fa-tag"></i> 
+            Tags</a></li> 
+
+          <li><a href="/user/finduser"> 
+            <i class="fa fa-fw fa-user"></i> 
+            Users</a></li>
+
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <li><a href="/post/findpost"> 
+              <i class="fa fa-fw fa-file-alt"></i> 
+              Post</a></li> 
+
+          <li><a href="/base"> 
+            <i class="fa fa-fw fa-link"></i> 
+            Broswe</a></li> 
+
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+          <li><a href="{{ url_for('logout') }}"> 
+            <i class="fa fa-fw fa-sign-out"></i> 
+            Logout</a></li>
+      </ul>
+
+                      </div>
+ 
+</div>
+</main>
+
+
+
+
+<!-- Site footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <h6>THEFAKEBOOK</h6>
+        <div class="footer-links">
+          <li><a href="/help">Help</a></li>
+          <li><a href="/question">Question</a></li>
+          <li><a href="/help/all-badges-can-earn">Allbadges</a></li>
+          <li><a href="/welcome/{{ current_user.username }}">Welcome</a></li>
+          <li><a href="/allmessage">All messages</a></li>
+        </div>
+      </div>
+
+      <div class="col-xs-6 col-md-3">
+        <h6>About Us</h6>
+        <div class="footer-links">
+          <li><a href="/about">About</a></li>
+          <li><a href="/help/privacy">Privacy</a></li>
+          <li><a href="/help/terms">Terms</a></li>
+          <li><a href="/feedback/new">Write Feedback</a></li>
+        </div>
+      </div>
+
+      <div class="col-xs-6 col-md-4">
+        <h6>Contact Us</h6>
+        <div class="footer-links">
+          <li><a href="https://www.instagram.com/doryc007/" target="_blank">Instagram</a></li> 
+          <li><a href="https://stackoverflow.com/users/13825988/ericsson" target="_blank">Stackoverflow</a></li> 
+          <li><a href="https://www.reddit.com/user/Doryc007/" target="_blank">Reddit</a></li> 
+          <li><a href="/help/contact">Email</a></li>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+</div>
+</div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2020 thefakebook
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
